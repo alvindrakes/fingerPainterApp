@@ -21,45 +21,52 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
-            android:id="@+id/radioButton4"
+            android:id="@+id/redColour"
             android:layout_width="289dp"
             android:layout_height="219dp"
             android:layout_weight="1"
-            android:text="RadioButton" />
+            android:text="Red"
+            android:buttonTint="@color/orange"/>
 
         <RadioButton
-            android:id="@+id/radioButton5"
+            android:id="@+id/greenColour"
             android:layout_width="289dp"
             android:layout_height="219dp"
             android:layout_weight="1"
-            android:text="RadioButton" />
+            android:text="Green"
+            android:buttonTint="@color/green"/>
 
         <RadioButton
-            android:id="@+id/radioButton6"
+            android:id="@+id/blueColour"
             android:layout_width="289dp"
             android:layout_height="219dp"
             android:layout_weight="1"
-            android:text="RadioButton" />
+            android:text="Blue"
+            android:buttonTint="@color/blue"/>
 
         <RadioButton
-            android:id="@+id/radioButton7"
+            android:id="@+id/blackColour"
             android:layout_width="289dp"
             android:layout_height="219dp"
             android:layout_weight="1"
-            android:text="RadioButton" />
+            android:text="Black"
+            android:buttonTint="@color/black"/>
 
         <RadioButton
-            android:id="@+id/radioButton8"
+            android:id="@+id/yellowColour"
             android:layout_width="289dp"
             android:layout_height="219dp"
             android:layout_weight="1"
-            android:text="RadioButton" />
+            android:text="Yellow"
+            android:buttonTint="@color/yellow"/>
 
         <RadioButton
-            android:id="@+id/radioButton9"
+            android:id="@+id/purpleColour"
             android:layout_width="289dp"
             android:layout_height="219dp"
             android:layout_weight="1"
-            android:text="RadioButton" />
+            android:text="Purple"
+            android:buttonTint="@color/purple" />
+
     </RadioGroup>
 </android.support.constraint.ConstraintLayout>

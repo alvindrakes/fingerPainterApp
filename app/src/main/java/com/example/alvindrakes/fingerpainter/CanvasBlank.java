@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.alvindrakes.fingerpainter.ColourPicker;
+
 public class CanvasBlank extends AppCompatActivity {
 
     Button chooseColour;
@@ -18,6 +20,7 @@ public class CanvasBlank extends AppCompatActivity {
     ImageView chosenImage;
     Uri imageURI;
     private static final int PICK_IMAGE = 100;
+    public FingerPainterView fingerPainterView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,8 @@ public class CanvasBlank extends AppCompatActivity {
         chooseBrush = (Button) findViewById(R.id.brushPicker);
         chosenImage = (ImageView) findViewById(R.id.chosenImage);
         uploadPic = (FloatingActionButton) findViewById(R.id.uploadPic);
+
+        fingerPainterView = new FingerPainterView(CanvasBlank.this);
 
         // get the default brush colour
 
@@ -60,8 +65,14 @@ public class CanvasBlank extends AppCompatActivity {
                 CanvasBlank.this.startActivity(brushIntent);
             }
         });
+
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fingerPainterView.getColour();
+    }
 
     // load chosen image from phone
     private void openDownloadImage() {
