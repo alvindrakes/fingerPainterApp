@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FingerPainter</string>
+    <item name="myFingerPainterViewId" type='id' />
+    <string name="title_activity_home_page">HomePage</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>
