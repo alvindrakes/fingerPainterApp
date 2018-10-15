@@ -5,83 +5,78 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/popup_bg"
-    tools:context=".BrushPicker">
+    tools:context=".BrushPicker"
+    tools:layout_editor_absoluteY="25dp">
 
     <RadioGroup
         android:id="@+id/brushTypeBtn"
-        android:layout_width="280dp"
-        android:layout_height="205dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/brushStrokebtn"
-        app:layout_constraintVertical_bias="0.35">
+        app:layout_constraintTop_toBottomOf="@+id/brushWidthSeekbar">
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="67dp"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="brush type"
+            android:text="Brush Type"
             tools:layout_editor_absoluteX="139dp"
             tools:layout_editor_absoluteY="108dp" />
 
         <RadioButton
-            android:id="@+id/radioButton4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Thicc" />
-
-        <RadioButton
-            android:id="@+id/radioButton3"
-            android:layout_width="293dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="ThinAF" />
-    </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/brushStrokebtn"
-        android:layout_width="280dp"
-        android:layout_height="205dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="83dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginBottom="276dp"
-            android:layout_weight="1"
-            android:text="brush stroke"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/brushTypeBtn"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-        <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/roundStroke"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Round" />
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/squareStroke"
             android:layout_width="293dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Square" />
     </RadioGroup>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="218dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="54dp"
+        app:layout_constraintBottom_toTopOf="@+id/brushTypeBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <SeekBar
+        android:id="@+id/brushWidthSeekbar"
+        android:layout_width="171dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="124dp"
+        app:layout_constraintBottom_toTopOf="@+id/brushTypeBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/brushWidthBtn" />
+
+    <TextView
+        android:id="@+id/brushWidthBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="51dp"
+        android:text="Brush Width"
+        app:layout_constraintBottom_toTopOf="@+id/brushWidthSeekbar"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

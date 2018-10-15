@@ -11,18 +11,15 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".CanvasBlank"
-            android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
 
         <activity
             android:name=".ColourPicker"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.PopMe" />
 
         <activity
             android:name=".HomePage"
-            android:label="FingerPainter"
-            android:screenOrientation="portrait">
+            android:label="FingerPainter">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -33,7 +30,6 @@
 
         <activity
             android:name=".ImageCanvas"
-            android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
 
         <activity
