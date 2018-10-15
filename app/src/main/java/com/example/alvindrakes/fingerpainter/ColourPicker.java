@@ -10,30 +10,28 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.RadioButton;
 
-public class ColourPicker extends AppCompatActivity {
+public class ColourPicker extends AppCompatActivity implements View.OnClickListener {
 
     private RadioButton redColourBtn;
     private RadioButton blueColourBtn;
     private RadioButton blackColourBtn;
     private RadioButton greenColourBtn;
     private RadioButton yellowColourBtn;
-    private RadioButton purpleColourBtn;
-
-    public FingerPainterView fingerPainterView;
-
+    private RadioButton magentaColourBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_colour_picker);
 
+        // animation for pop up
         DisplayMetrics disMetric = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(disMetric);
 
         int width = disMetric.widthPixels;
         int height = disMetric.heightPixels;
 
-        getWindow().setLayout((int)(width * .8), (int)(height * .7));
+        getWindow().setLayout((int) (width * .8), (int) (height * .7));
 
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.gravity = Gravity.CENTER;
@@ -43,19 +41,52 @@ public class ColourPicker extends AppCompatActivity {
         getWindow().setAttributes(params);
 
         redColourBtn = (RadioButton) findViewById(R.id.redColour);
+        redColourBtn.setOnClickListener(this);
+
         blueColourBtn = (RadioButton) findViewById(R.id.blueColour);
+        blueColourBtn.setOnClickListener(this);
+
         greenColourBtn = (RadioButton) findViewById(R.id.greenColour);
+        greenColourBtn.setOnClickListener(this);
+
         blackColourBtn = (RadioButton) findViewById(R.id.blackColour);
+        blackColourBtn.setOnClickListener(this);
+
         yellowColourBtn = (RadioButton) findViewById(R.id.yellowColour);
-        purpleColourBtn = (RadioButton) findViewById(R.id.purpleColour);
+        yellowColourBtn.setOnClickListener(this);
 
+        magentaColourBtn = (RadioButton) findViewById(R.id.magentaColour);
+        magentaColourBtn.setOnClickListener(this);
 
+    }
 
-        redColourBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                fingerPainterView.setColour(Color.argb(0xff, 0x99, 0x4c, 0x00));
-            }
-        });
+    @Override
+    public void onClick(View v) {
+        int chosenColour = 0;
+        Intent intent = new Intent();
+
+        switch (v.getId()) {
+            case R.id.redColour:
+                chosenColour = Color.RED;
+                break;
+            case R.id.yellowColour:
+                chosenColour = Color.YELLOW;
+                break;
+            case R.id.blueColour:
+                chosenColour = Color.BLUE;
+                break;
+            case R.id.blackColour:
+                chosenColour = Color.BLACK;
+                break;
+            case R.id.magentaColour:
+                chosenColour = Color.MAGENTA;
+                break;
+            case R.id.greenColour:
+                chosenColour = Color.GREEN;
+                break;
+        }
+        intent.putExtra("newColour", chosenColour);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }
