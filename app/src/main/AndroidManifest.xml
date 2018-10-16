@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.alvindrakes.fingerpainter">
 
     <application
@@ -11,7 +12,15 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".CanvasBlank"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/NoActionBar">
+            <intent-filter tools:ignore = "AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+        </activity>
+
+
 
         <activity
             android:name=".ColourPicker"

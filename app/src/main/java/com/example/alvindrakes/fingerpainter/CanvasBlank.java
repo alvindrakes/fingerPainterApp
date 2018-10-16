@@ -2,10 +2,14 @@ package com.example.alvindrakes.fingerpainter;
 
 import android.content.Intent;
 import android.graphics.Paint;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
+
+import java.net.URL;
 
 public class CanvasBlank extends AppCompatActivity {
 
@@ -56,6 +60,8 @@ public class CanvasBlank extends AppCompatActivity {
                 startActivityForResult(brushIntent, CHOOSE_BRUSH_CODE);
             }
         });
+
+        handleIntent();
 
     }
 
@@ -120,5 +126,13 @@ public class CanvasBlank extends AppCompatActivity {
 
     }
 
+    // handle the image opened from device
+    private void handleIntent() {
+        Intent intent = getIntent();
+        Uri data = intent.getData();
+
+        FingerPainterView fingerPainterView = (FingerPainterView) findViewById(R.id.fingerPainterView);
+        fingerPainterView.load(data);
+    }
 
 }
