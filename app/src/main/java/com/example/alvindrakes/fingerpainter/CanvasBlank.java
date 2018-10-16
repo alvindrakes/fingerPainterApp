@@ -14,12 +14,10 @@ public class CanvasBlank extends AppCompatActivity {
 
     public FingerPainterView fingerPainterView;
     private int defaultColour;
-    private String defaultBrushCap;
     private int brushWidth;
 
     private int CHOOSE_COLOUR_CODE = 0;
-    private int CHOOSE_BRUSH_STROKE_CODE = 1;
-
+    private int CHOOSE_BRUSH_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,17 +53,18 @@ public class CanvasBlank extends AppCompatActivity {
 
                 Intent brushIntent = new Intent(CanvasBlank.this, BrushPicker.class);
 
-                startActivityForResult(brushIntent, CHOOSE_BRUSH_STROKE_CODE);
+                startActivityForResult(brushIntent, CHOOSE_BRUSH_CODE);
             }
         });
 
     }
 
 
-    // receive chosen colour/brush cap and change the brush colour/cap
+    // receive chosen colour/brush shape and change the brush colour/cap
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
+        String defaultBrushShape;
 
         if (requestCode == CHOOSE_COLOUR_CODE) {
             if (resultCode == RESULT_OK) {
@@ -75,18 +74,50 @@ public class CanvasBlank extends AppCompatActivity {
             }
         }
 
-        if (requestCode == CHOOSE_BRUSH_STROKE_CODE) {
+        if (requestCode == CHOOSE_BRUSH_CODE) {
             if (resultCode == RESULT_OK) {
 
-                defaultBrushCap = data.getExtras().getString("newBrush");
+                defaultBrushShape = data.getExtras().getString("newBrush");
+                brushWidth = data.getExtras().getInt("newBrushWidth");
 
-                if(defaultBrushCap.equals("ROUND")) {
+                if(defaultBrushShape.equals("ROUND")) {
                     fingerPainterView.setBrush(Paint.Cap.ROUND);
-                } else if (defaultBrushCap.equals("SQUARE")) {
+                } else if (defaultBrushShape.equals("SQUARE")) {
                     fingerPainterView.setBrush(Paint.Cap.SQUARE);
                 }
+
+                fingerPainterView.setBrushWidth(brushWidth);
             }
         }
+    }
+
+
+    // save the status of brush type/width and color when the orientation is changed
+    @Override
+    protected void onSaveInstanceState(Bundle backState) {
+        FingerPainterView fingerPainterView = (FingerPainterView) findViewById(R.id.fingerPainterView);
+        backState.putInt("newColour", fingerPainterView.getColour());
+        backState.putString("newBrush", fingerPainterView.getBrush().toString());
+        backState.putInt("newBrushWidth", fingerPainterView.getBrushWidth());
+        super.onSaveInstanceState(backState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        fingerPainterView = (FingerPainterView) findViewById(R.id.fingerPainterView);
+        fingerPainterView.setColour(savedInstanceState.getInt("newColour"));
+        fingerPainterView.setBrushWidth(savedInstanceState.getInt("newBrushWidth"));
+
+        String brush_shape = savedInstanceState.getString("newBrush");
+
+        if (brush_shape.equals("ROUND")) {
+            fingerPainterView.setBrush(Paint.Cap.ROUND);
+        } else if (brush_shape.equals("SQUARE")) {
+            fingerPainterView.setBrush(Paint.Cap.SQUARE);
+        }
+
     }
 
 

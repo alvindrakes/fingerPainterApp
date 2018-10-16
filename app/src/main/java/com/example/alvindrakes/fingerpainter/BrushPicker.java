@@ -10,6 +10,7 @@ import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.Toast;
@@ -19,6 +20,12 @@ public class BrushPicker extends AppCompatActivity implements View.OnClickListen
     private RadioButton roundCapBtn;
     private RadioButton squareCapbtn;
     private SeekBar brushWidthSeekbar;
+
+    int chosenBrushWidth;
+    String chosenBrushType = null;
+
+    Button confirmBrushBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +48,9 @@ public class BrushPicker extends AppCompatActivity implements View.OnClickListen
 
         getWindow().setAttributes(params);
 
+        confirmBrushBtn = (Button) findViewById(R.id.confirmBrushBtn);
+        confirmBrushBtn.setOnClickListener(this);
+
         roundCapBtn = (RadioButton) findViewById(R.id.roundStroke);
         roundCapBtn.setOnClickListener(this);
 
@@ -52,7 +62,7 @@ public class BrushPicker extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
-
+                chosenBrushWidth = progress;
             }
 
             @Override
@@ -70,21 +80,32 @@ public class BrushPicker extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        String chosenBrushtype = null;
         Intent intent = new Intent();
 
         switch (v.getId()) {
             case R.id.roundStroke:
-                chosenBrushtype = "ROUND";
+                chosenBrushType = "ROUND";
                 break;
             case R.id.squareStroke:
-                chosenBrushtype = "SQUARE";
+                chosenBrushType = "SQUARE";
+                break;
+            case R.id.confirmBrushBtn:
+                if (chosenBrushWidth != 0 && chosenBrushType != "") {
+                    sendBrushType(intent, "newBrush", chosenBrushType);
+                    sendBrushWidth(intent, "newBrushWidth", chosenBrushWidth);
+                    finish();
+                }
                 break;
         }
+    }
 
-        intent.putExtra("newBrush", chosenBrushtype);
+    private void sendBrushType(Intent intent, String key, String brushType) {
+        intent.putExtra(key, brushType);
         setResult(RESULT_OK, intent);
-        finish();
+    }
 
+    private void sendBrushWidth(Intent intent, String key, int brushWidth) {
+        intent.putExtra(key, brushWidth);
+        setResult(RESULT_OK, intent);
     }
 }
