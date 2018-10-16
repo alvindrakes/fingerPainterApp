@@ -3,10 +3,10 @@ package com.example.alvindrakes.fingerpainter;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.net.Uri;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.Button;
 
 import java.net.URL;
@@ -15,6 +15,7 @@ public class CanvasBlank extends AppCompatActivity {
 
     Button chooseColour;
     Button chooseBrush;
+    FloatingActionButton closeCanvas;
 
     public FingerPainterView fingerPainterView;
     private int defaultColour;
@@ -32,6 +33,8 @@ public class CanvasBlank extends AppCompatActivity {
 
         chooseColour = (Button) findViewById(R.id.colourPickerBtn);
         chooseBrush = (Button) findViewById(R.id.brushPickerBtn);
+        closeCanvas = (FloatingActionButton) findViewById(R.id.closeCanvas);
+
 
         defaultColour = fingerPainterView.getColour();
         brushWidth = fingerPainterView.getBrushWidth();
@@ -40,9 +43,7 @@ public class CanvasBlank extends AppCompatActivity {
         chooseColour.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
                         Intent colourIntent = new Intent(CanvasBlank.this, ColourPicker.class);
-
                         startActivityForResult(colourIntent, CHOOSE_COLOUR_CODE);
             }
         });
@@ -54,10 +55,18 @@ public class CanvasBlank extends AppCompatActivity {
         chooseBrush.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent brushIntent = new Intent(CanvasBlank.this, BrushPicker.class);
-
                 startActivityForResult(brushIntent, CHOOSE_BRUSH_CODE);
+            }
+        });
+
+        // reset the activity and clear the canvas
+        closeCanvas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
             }
         });
 
@@ -126,7 +135,7 @@ public class CanvasBlank extends AppCompatActivity {
 
     }
 
-    // handle the image opened from device
+    // handle the image opened from device and show it on canvas
     private void handleIntent() {
         Intent intent = getIntent();
         Uri data = intent.getData();

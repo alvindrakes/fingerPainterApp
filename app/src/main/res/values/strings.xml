@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name">FingerPainter</string>
-    <item name="myFingerPainterViewId" type='id' />
     <string name="title_activity_home_page">HomePage</string>
-    <string name="title_home">Home</string>
+    <string name="title_home">Choose an action to perform below!</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="colour">Colour</string>
-    <string name="brush">Brush</string>
+    <string name="colour">Set Colour</string>
+    <string name="brush">Set Brush</string>
 </resources>
