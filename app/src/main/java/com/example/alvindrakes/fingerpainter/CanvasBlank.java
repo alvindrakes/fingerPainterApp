@@ -1,6 +1,7 @@
 package com.example.alvindrakes.fingerpainter;
 
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.net.URL;
 
@@ -67,6 +69,7 @@ public class CanvasBlank extends AppCompatActivity {
                 Intent intent = getIntent();
                 finish();
                 startActivity(intent);
+                Toast.makeText(CanvasBlank.this, "Canvas has been reset!", Toast.LENGTH_SHORT).show();
             }
         });
 

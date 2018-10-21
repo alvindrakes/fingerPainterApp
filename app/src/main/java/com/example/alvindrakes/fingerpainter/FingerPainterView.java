@@ -154,7 +154,7 @@ public class FingerPainterView extends View {
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
+    public void onDraw(Canvas canvas) {
         // canvas is white with a bitmap with alpha channel drawn over the top
         canvas.drawColor(Color.WHITE);
         canvas.drawBitmap(bitmap, 0, 0, paint);

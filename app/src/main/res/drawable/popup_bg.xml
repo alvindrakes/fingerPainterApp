@@ -2,8 +2,8 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
     <gradient
-        android:startColor="#279be9"
-        android:endColor="#66a8ba"
+        android:startColor="#9cd7ff"
+        android:endColor="#90d8ec"
         android:angle="90"
         />
 

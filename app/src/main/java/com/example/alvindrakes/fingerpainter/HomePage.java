@@ -29,9 +29,6 @@ import java.io.InputStream;
 public class HomePage extends AppCompatActivity {
 
     private Button gotoCanvas;
-    private Button uploadPic;
-
-    private int REQUEST_GET_SINGLE_IMAGE = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +36,6 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
         gotoCanvas = (Button) findViewById(R.id.gotoCanvas);
-        uploadPic = (Button) findViewById(R.id.uploadPic);
 
         gotoCanvas.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,34 +44,7 @@ public class HomePage extends AppCompatActivity {
                 HomePage.this.startActivity(canvasIntent);
             }
         });
-
-//        uploadPic.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-//                intent.setType("image/*");
-//                startActivityForResult(intent, REQUEST_GET_SINGLE_IMAGE);
-//            }
-//        });
     }
 }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == REQUEST_GET_SINGLE_IMAGE && resultCode == RESULT_OK) {
-//            Bundle extras = data.getExtras();
-//            Bitmap imageBitmap = (Bitmap) extras.get("data");
-//
-//            FingerPainterView fingerPainterView = (FingerPainterView) findViewById(R.id.fingerPainterView);
-//            fingerPainterView.load(getImageUri(HomePage.this, imageBitmap));
-//        }
-//    }
-//
-//    public Uri getImageUri(Context inContext, Bitmap inImage) {
-//        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-//        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-//        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
-//        return Uri.parse(path);
-//    }
 

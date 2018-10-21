@@ -13,11 +13,10 @@
         android:layout_width="0dp"
         android:layout_height="118dp"
         android:layout_marginStart="52dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="52dp"
-        android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/brushWidthSeekbar">
 
@@ -48,9 +47,9 @@
     <SeekBar
         android:id="@+id/brushWidthSeekbar"
         android:layout_width="171dp"
-        android:layout_height="83dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="62dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/brushWidthBtn" />
 
@@ -58,29 +57,33 @@
         android:id="@+id/brushWidthBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="55dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="51dp"
-        android:text="Brush Width"
-        app:layout_constraintBottom_toTopOf="@+id/brushWidthSeekbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="52dp"
+        android:text="Brush Width:"
+        app:layout_constraintBaseline_toBaselineOf="@+id/brushWidthValue"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/confirmBrushBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="242dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="66dp"
+        android:background="@color/colorPrimary"
         android:text="Ok"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/brushTypeBtn"
-        app:layout_constraintVertical_bias="0.492" />
+        app:layout_constraintTop_toBottomOf="@+id/brushTypeBtn" />
+
+    <TextView
+        android:id="@+id/brushWidthValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="48dp"
+        android:text="0"
+        app:layout_constraintStart_toEndOf="@+id/brushWidthBtn"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

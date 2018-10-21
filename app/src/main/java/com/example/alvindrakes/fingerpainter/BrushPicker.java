@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class BrushPicker extends AppCompatActivity implements View.OnClickListener {
@@ -20,6 +21,7 @@ public class BrushPicker extends AppCompatActivity implements View.OnClickListen
     private RadioButton roundCapBtn;
     private RadioButton squareCapbtn;
     private SeekBar brushWidthSeekbar;
+    private TextView brushWidthValue;
 
     int chosenBrushWidth;
     String chosenBrushType = null;
@@ -48,6 +50,8 @@ public class BrushPicker extends AppCompatActivity implements View.OnClickListen
 
         getWindow().setAttributes(params);
 
+        brushWidthValue = (TextView) findViewById(R.id.brushWidthValue);
+
         confirmBrushBtn = (Button) findViewById(R.id.confirmBrushBtn);
         confirmBrushBtn.setOnClickListener(this);
 
@@ -63,6 +67,7 @@ public class BrushPicker extends AppCompatActivity implements View.OnClickListen
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
                 chosenBrushWidth = progress;
+                brushWidthValue.setText(String.valueOf(progress));
             }
 
             @Override
