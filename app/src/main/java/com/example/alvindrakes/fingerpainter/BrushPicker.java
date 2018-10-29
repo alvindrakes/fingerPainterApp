@@ -61,6 +61,7 @@ public class BrushPicker extends AppCompatActivity implements View.OnClickListen
         squareCapbtn = (RadioButton) findViewById(R.id.squareStroke);
         squareCapbtn.setOnClickListener(this);
 
+        // slider for brushwidth
         brushWidthSeekbar = (SeekBar) findViewById(R.id.brushWidthSeekbar);
         brushWidthSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override

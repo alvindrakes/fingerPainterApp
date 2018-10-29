@@ -138,7 +138,7 @@ public class CanvasBlank extends AppCompatActivity {
 
     }
 
-    // handle the image opened from device and show it on canvas
+    // handle the image opened from device and show it on canvas (implicit intent)
     private void handleIntent() {
         Intent intent = getIntent();
         Uri data = intent.getData();
